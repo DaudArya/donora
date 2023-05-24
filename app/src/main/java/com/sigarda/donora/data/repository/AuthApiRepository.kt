@@ -2,6 +2,8 @@ package com.sigarda.donora.data.repository
 
 import com.sigarda.donora.data.local.UserLocalDataSource
 import com.sigarda.donora.data.network.datasource.AuthRemoteDataSource
+import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
+import com.sigarda.donora.data.network.models.auth.google.login.LoginGoogleResponse
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
 import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
 import com.sigarda.donora.data.network.models.auth.register.requestbody.RegisterRequestBody
@@ -14,6 +16,7 @@ interface AuthApiRepository {
 
     suspend fun postRegisterUser(registerRequestBody: RegisterRequestBody): Resource<RegisterResponse>
     suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginResponse>
+    suspend fun postLoginUserGoogle(googleAuthRequestBody: GoogleAuthRequestBody): Resource<LoginGoogleResponse>
     suspend fun setUserLogin(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
     suspend fun saveUserToken(isToken: String)
@@ -31,6 +34,12 @@ class AuthApiRepositoryImpl @Inject constructor(private val userLocalDataSource:
     override suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginResponse> {
         return proceed {
             dataSource.postLogin(loginRequestBody)
+        }
+    }
+
+    override suspend fun postLoginUserGoogle(googleAuthRequestBody: GoogleAuthRequestBody): Resource<LoginGoogleResponse> {
+        return proceed {
+            dataSource.postLoginGoogle(googleAuthRequestBody)
         }
     }
 

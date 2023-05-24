@@ -1,5 +1,7 @@
 package com.sigarda.donora.data.network.datasource
 
+import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
+import com.sigarda.donora.data.network.models.auth.google.login.LoginGoogleResponse
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
 import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
 import com.sigarda.donora.data.network.models.auth.register.requestbody.RegisterRequestBody
@@ -10,6 +12,7 @@ import javax.inject.Inject
 interface AuthRemoteDataSource {
     suspend fun postLogin(loginRequestBody: LoginRequestBody): LoginResponse
     suspend fun postRegister(registerRequestBody: RegisterRequestBody): RegisterResponse
+    suspend fun postLoginGoogle(googleAuthRequestBody: GoogleAuthRequestBody): LoginGoogleResponse
 }
 
 class AuthRemoteDataSourceImpl @Inject constructor(private val apiService: AuthApiInterface) :
@@ -18,6 +21,11 @@ class AuthRemoteDataSourceImpl @Inject constructor(private val apiService: AuthA
     override suspend fun postRegister(registerRequestBody: RegisterRequestBody): RegisterResponse {
         return apiService.postRegister(registerRequestBody)
     }
+
+    override suspend fun postLoginGoogle(googleAuthRequestBody: GoogleAuthRequestBody): LoginGoogleResponse {
+        return apiService.postLoginGoogle(googleAuthRequestBody)
+    }
+
     override suspend fun postLogin(loginRequestBody: LoginRequestBody): LoginResponse {
         return apiService.postLogin(loginRequestBody)
     }

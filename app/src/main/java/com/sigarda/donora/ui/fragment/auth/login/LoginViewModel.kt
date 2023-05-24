@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.sigarda.donora.data.local.UserDataStoreManager
+import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
+import com.sigarda.donora.data.network.models.auth.google.login.LoginGoogleResponse
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
 import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
 import com.sigarda.donora.data.repository.AuthApiRepository
@@ -25,12 +27,24 @@ class LoginViewModel @Inject constructor(
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
 
+    private var _postLoginGoogleResponse = MutableLiveData<Resource<LoginGoogleResponse>>()
+    val postLoginGoogleResponse: LiveData<Resource<LoginGoogleResponse>> get() = _postLoginGoogleResponse
+
 
     fun login(loginRequestBody: LoginRequestBody) {
         viewModelScope.launch(Dispatchers.IO) {
             val loginResponse = authRepository.postLoginUser(loginRequestBody)
             viewModelScope.launch(Dispatchers.Main) {
                 _postLoginUserResponse.postValue(loginResponse)
+            }
+        }
+    }
+
+    fun loginGoogle(googleAuthRequestBody: GoogleAuthRequestBody) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val loginGoogleResponse = authRepository.postLoginUserGoogle(googleAuthRequestBody)
+            viewModelScope.launch(Dispatchers.Main) {
+                _postLoginGoogleResponse.postValue(loginGoogleResponse)
             }
         }
     }

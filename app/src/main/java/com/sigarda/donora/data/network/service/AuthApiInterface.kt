@@ -1,5 +1,7 @@
 package com.sigarda.donora.data.network.service
 
+import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
+import com.sigarda.donora.data.network.models.auth.google.login.LoginGoogleResponse
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
 import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
 import com.sigarda.donora.data.network.models.auth.register.requestbody.RegisterRequestBody
@@ -17,4 +19,12 @@ interface AuthApiInterface {
     suspend fun postLogin(
         @Body loginRequestBody: LoginRequestBody
     ): LoginResponse
+
+
+    @POST("auth/google/login")
+    suspend fun postLoginGoogle(
+        @Body googleAuthRequestBody: GoogleAuthRequestBody
+    ): LoginGoogleResponse
+
+
 }
