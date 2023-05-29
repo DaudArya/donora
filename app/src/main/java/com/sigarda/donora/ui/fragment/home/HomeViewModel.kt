@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.sigarda.donora.data.local.UserDataStoreManager
-import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
+import com.sigarda.donora.data.network.models.auth.login.response.LoginUserResponse
 import com.sigarda.donora.data.network.service.AuthApiInterface
 import com.sigarda.donora.data.repository.AuthApiRepository
 import com.sigarda.donora.utils.Resource
@@ -17,9 +17,8 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager, private val userRepository: AuthApiRepository, private val ApiClient: AuthApiInterface ) : ViewModel() {
 
-
-    private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
-    val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
+    private var _postLoginUserResponse = MutableLiveData<Resource<LoginUserResponse>>()
+    val postLoginUserResponse: LiveData<Resource<LoginUserResponse>> get() = _postLoginUserResponse
 
     fun statusLogin(isLogin: Boolean) {
         viewModelScope.launch {

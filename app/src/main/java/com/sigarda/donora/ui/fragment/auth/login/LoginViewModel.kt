@@ -6,10 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.sigarda.donora.data.local.UserDataStoreManager
+import com.sigarda.donora.data.network.models.auth.create.CreateProfileRequestBody
+import com.sigarda.donora.data.network.models.auth.create.CreateProfileResponse
 import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
 import com.sigarda.donora.data.network.models.auth.google.login.LoginGoogleResponse
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
-import com.sigarda.donora.data.network.models.auth.login.response.LoginResponse
+import com.sigarda.donora.data.network.models.auth.login.response.LoginUserResponse
 import com.sigarda.donora.data.repository.AuthApiRepository
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,11 +26,14 @@ class LoginViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    private var _postLoginUserResponse = MutableLiveData<Resource<LoginResponse>>()
-    val postLoginUserResponse: LiveData<Resource<LoginResponse>> get() = _postLoginUserResponse
+    private var _postLoginUserResponse = MutableLiveData<Resource<LoginUserResponse>>()
+    val postLoginUserResponse: LiveData<Resource<LoginUserResponse>> get() = _postLoginUserResponse
 
     private var _postLoginGoogleResponse = MutableLiveData<Resource<LoginGoogleResponse>>()
     val postLoginGoogleResponse: LiveData<Resource<LoginGoogleResponse>> get() = _postLoginGoogleResponse
+
+    private var _postCreateUserResponse = MutableLiveData<Resource<CreateProfileResponse>>()
+    val postCreateUserResponse: LiveData<Resource<CreateProfileResponse>> get() = _postCreateUserResponse
 
 
     fun login(loginRequestBody: LoginRequestBody) {
@@ -36,6 +41,16 @@ class LoginViewModel @Inject constructor(
             val loginResponse = authRepository.postLoginUser(loginRequestBody)
             viewModelScope.launch(Dispatchers.Main) {
                 _postLoginUserResponse.postValue(loginResponse)
+            }
+        }
+    }
+
+    fun postCreateUser(token: String, createUserRequestBody: CreateProfileRequestBody) {
+        viewModelScope.launch(Dispatchers.IO) {
+            _postCreateUserResponse.postValue(Resource.Loading())
+            val response = authRepository.createUser(token, createUserRequestBody)
+            viewModelScope.launch(Dispatchers.Main) {
+                _postCreateUserResponse.postValue(response)
             }
         }
     }

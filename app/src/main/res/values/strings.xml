@@ -20,6 +20,24 @@
     <string name="googleRegister" translatable="false">Daftar Dengan Google</string>
     <string name="donthaveaccoutn" translatable="false">Belum Punya Akun ?</string>
     <string name="haveaccoutn" translatable="false">Sudah Punya Akun ?</string>
+
+    <string name="dataProfile" translatable="false">Data Diri</string>
+    <string name="username" translatable="false">username</string>
+    <string name="fullName" translatable="false">Nama Lengkap</string>
+    <string name="phoneNumber" translatable="false">Nomor Telepon</string>
+    <string name="nik" translatable="false">Nomor Induk Kependudukan</string>
+    <string name="age" translatable="false">Usia</string>
+    <string name="gender" translatable="false">Jenis Kelamin</string>
+    <string name="donorCode" translatable="false">Kode Donor</string>
+    <string name="failedCreateUser" translatable="false">Gagal Create User</string>
+    <string name="useralreadycreated" translatable="false">User Sudah Dibuat</string>
+
+    <string name="reward" translatable="false">Lihat Reward Saya</string>
+    <string name="history" translatable="false">Lihat History Saya</string>
+
+    <string name="thanks" translatable="false">Terimakasih sudah menjadi pahlawan dengan menyumbangkan darah,Lihat reward dan histori donor kamu disini!</string>
+
+
     <string name="logout" translatable="false">Keluar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
