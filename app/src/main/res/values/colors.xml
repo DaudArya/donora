@@ -7,7 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="grey">#D9D9D9</color>
+    <color name="grey_dark">#EDF1F3</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="juara1">#1D1F38</color>
+    <color name="juara2">#FFBC42</color>
+    <color name="juara3">#8D99AE</color>
 
     <color name="BlueUp2">#1F5BF3</color>
     <color name="blueUp">#0947E8</color>

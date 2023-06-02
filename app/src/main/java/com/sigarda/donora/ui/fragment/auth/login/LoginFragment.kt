@@ -367,7 +367,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 is Resource.Success ->{
                     val id = "${it.data?.data?.user?.id}".toInt()
                     val profile = "${it.data?.data?.user?.user_profile}"
-                    if (profile == null){
+                    if (profile == "null"){
                         viewModel.getDataStoreToken().observe(viewLifecycleOwner) {
                             viewModel.postCreateUser("Bearer $it", parseFormIntoCreateUser(id))}
                         val msg = "Your Id : $id"
@@ -393,7 +393,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
             when(it){
                 is Resource.Success ->{
                     val id = "${it.data?.data?.user?.id}".toInt()
-                    if (id != null){
+                    val profile = "${it.data?.data?.user?.user_profile}"
+                    if (profile == "null"){
                         viewModel.getDataStoreToken().observe(viewLifecycleOwner) {
                             viewModel.postCreateUser("Bearer $it", parseFormIntoCreateUser(id))}
                         val msg = "Your Id : $id"
@@ -410,7 +411,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
                                 show()
                             }
                     }
-                }else -> {} }
+                }is Resource.Error ->{
+                Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_LONG).show()
+                }
+
+                else -> {}
+            }
         }
     }
 
@@ -423,7 +429,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         //ini untuk set tokennya ke datastore
                         viewModel.setUserToken(token)
                         viewModel.SaveUserToken(token)
-                        createUser()
+//                        createUser()
                         Snackbar.make(
                             binding.root,
                             getString(R.string.successSignIn),
@@ -435,7 +441,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                                 show()
                             }
                     } else {
-                        Toast.makeText(requireContext(), "token gagal di set", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireContext(), "${it.data?.message}", Toast.LENGTH_LONG).show()
                     }
                 }else -> {} }
         }
@@ -450,7 +456,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         //ini untuk set tokennya ke datastore
                         viewModel.setUserToken(token)
                         viewModel.SaveUserToken(token)
-                        createUserfromGoogle()
+//                        createUserfromGoogle()
                         Snackbar.make(
                             binding.root,
                             getString(R.string.successSignIn),

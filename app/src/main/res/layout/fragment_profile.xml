@@ -7,6 +7,8 @@
     android:background="@color/red"
     tools:context=".ui.fragment.profile.ProfileFragment">
 
+
+
     <LinearLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
@@ -48,8 +50,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/photprofile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/red"
             app:cardCornerRadius="200dp"
@@ -61,13 +63,14 @@
                 android:id="@+id/profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:cardCornerRadius="200dp"
                 tools:src="@drawable/mask_group" />
 
         </androidx.cardview.widget.CardView>
 
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -167,6 +170,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.47000003">
 
+            <ProgressBar
+                android:id="@+id/proggresBar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/nsv_profile" />
+
             <ScrollView
                 android:id="@+id/nsv_profile"
                 android:layout_width="match_parent"
@@ -179,6 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical">
+
 
                     <include
                         android:id="@+id/displayProfile"

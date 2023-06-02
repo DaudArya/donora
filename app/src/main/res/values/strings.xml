@@ -29,15 +29,20 @@
     <string name="age" translatable="false">Usia</string>
     <string name="gender" translatable="false">Jenis Kelamin</string>
     <string name="donorCode" translatable="false">Kode Donor</string>
+    <string name="bloodType" translatable="false">Golongan Darah</string>
     <string name="failedCreateUser" translatable="false">Gagal Create User</string>
     <string name="useralreadycreated" translatable="false">User Sudah Dibuat</string>
+
+    <string name="editProfile">Edit Profile</string>
+    <string name="male">Pria</string>
+    <string name="female">Wanita</string>
+
+    <string name="save">Simpan Perubahan</string>
 
     <string name="reward" translatable="false">Lihat Reward Saya</string>
     <string name="history" translatable="false">Lihat History Saya</string>
 
     <string name="thanks" translatable="false">Terimakasih sudah menjadi pahlawan dengan menyumbangkan darah,Lihat reward dan histori donor kamu disini!</string>
-
-
     <string name="logout" translatable="false">Keluar</string>
 
     <!-- TODO: Remove or change this placeholder text -->

@@ -16,14 +16,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <TextView
             android:id="@+id/textView50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/rbold"
-            android:text="Hai, Daud.\nSelamat Datang di Donora!"
+            android:text="Hai, User.\nSelamat Datang di Donora"
             android:textColor="#D80032"
             android:textSize="17dp"
             android:textStyle="bold|italic"
@@ -45,8 +44,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/information"
-            android:layout_width="410dp"
-            android:layout_height="350dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="20dp"
             android:background="@drawable/card_home_donora"
@@ -57,8 +56,10 @@
             app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
+                android:id="@+id/linearLayout3"
                 android:layout_width="345dp"
-                android:layout_height="115dp"
+                android:layout_height="80dp"
+
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,22 +68,22 @@
                 <ImageView
                     android:id="@+id/ava"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="15dp"
                     app:srcCompat="@drawable/mask_group" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="@integer/material_motion_duration_long_2"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textView57"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="36dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/rbold"
                         android:text="Daud Wakwaw"
                         android:textColor="#2B2D42"
@@ -150,7 +151,8 @@
                 <TextView
                     android:id="@+id/textView60"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/rbold"
@@ -165,13 +167,13 @@
                 android:id="@+id/linearLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="164dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal"
                 android:paddingLeft="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <LinearLayout
                     android:layout_width="90dp"
@@ -267,9 +269,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:paddingLeft="27dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="10dp"
+                android:layout_marginStart="27dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout5">
 
                 <LinearLayout
@@ -409,14 +410,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/banner"
-            android:layout_width="391dp"
-            android:layout_height="193dp"
-            android:layout_marginBottom="104dp"
-            android:background="@drawable/card_kembar3"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/view_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.55"
-            app:layout_constraintStart_toStartOf="parent" >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/information"
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -427,20 +430,21 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="#D80032"
+                    android:layout_marginTop="15dp"
                     android:fontFamily="@font/rbold"
-                    android:text="Sedang Dibutuhkan" />
+                    android:text="Sedang Dibutuhkan"
+                    android:textColor="#D80032" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="320dp"
-                    android:layout_height="120dp"
-                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
                     app:cardCornerRadius="20dp"
-                    app:cardElevation="7dp"/>
+                    app:cardElevation="7dp"
+                    tools:listitem="@layout/item_banner" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

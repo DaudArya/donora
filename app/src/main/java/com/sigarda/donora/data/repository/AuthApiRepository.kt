@@ -10,6 +10,9 @@ import com.sigarda.donora.data.network.models.auth.register.response.RegisterRes
 import com.sigarda.donora.data.network.models.auth.create.CreateProfileRequestBody
 import com.sigarda.donora.data.network.models.auth.create.CreateProfileResponse
 import com.sigarda.donora.data.network.models.auth.login.response.LoginUserResponse
+import com.sigarda.donora.data.network.models.profile.getProfile.GetProfileResponse
+import com.sigarda.donora.data.network.models.profile.profile.GetProfileUserResponse
+import com.sigarda.donora.data.network.models.profile.updateProfile.UpdateProfileResponse
 import com.sigarda.donora.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -19,6 +22,8 @@ interface AuthApiRepository {
     suspend fun postLoginUser(loginRequestBody: LoginRequestBody): Resource<LoginUserResponse>
     suspend fun postLoginUserGoogle(googleAuthRequestBody: GoogleAuthRequestBody): Resource<LoginGoogleResponse>
     suspend fun createUser(token : String , createUserRequestBody: CreateProfileRequestBody): Resource<CreateProfileResponse>
+    suspend fun getProfile(token : String): Resource<GetProfileResponse>
+    suspend fun updateProfileData(token: String): Resource<UpdateProfileResponse>
     suspend fun setUserLogin(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
     suspend fun saveUserToken(isToken: String)
@@ -66,6 +71,18 @@ class AuthApiRepositoryImpl @Inject constructor(
     ): Resource<CreateProfileResponse> {
         return proceed {
             dataSource.postCreateUser(token,createUserRequestBody)
+        }
+    }
+
+    override suspend fun getProfile(token: String): Resource<GetProfileResponse> {
+        return proceed {
+            dataSource.getProfile(token)
+        }
+    }
+
+    override suspend fun updateProfileData(token: String): Resource<UpdateProfileResponse>{
+        return proceed {
+            dataSource.updateProfile(token)
         }
     }
 

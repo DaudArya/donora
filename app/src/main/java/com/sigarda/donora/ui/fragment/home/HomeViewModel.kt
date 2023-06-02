@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager, private val userRepository: AuthApiRepository, private val ApiClient: AuthApiInterface ) : ViewModel() {
+class HomeViewModel @Inject constructor(val dataStoreManager: UserDataStoreManager ) : ViewModel() {
 
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginUserResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginUserResponse>> get() = _postLoginUserResponse
