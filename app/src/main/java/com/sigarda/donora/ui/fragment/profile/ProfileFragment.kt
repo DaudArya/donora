@@ -1,5 +1,6 @@
 package com.sigarda.donora.ui.fragment.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.service.controls.ControlsProviderService
 import android.util.Log
@@ -25,6 +26,7 @@ import org.chromium.base.ContextUtils
 import com.google.gson.Gson
 import com.sigarda.donora.data.network.models.profile.profile.Data
 import com.sigarda.donora.data.network.models.profile.profile.GetProfileUserResponse
+import com.sigarda.donora.ui.activity.MainActivity
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(), View.OnClickListener {
@@ -59,7 +61,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
         binding.profileImage.setImageResource(R.drawable.mask_group)
 
-        binding.displayProfile.logout.setOnClickListener(){
+        binding.logoutProfile.setOnClickListener(){
             toLogOut() }
 
         binding.back.setOnClickListener(){
@@ -70,6 +72,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
     }
+
+
 
     private fun observeGet(){
         viewModel.GetProfileUserResponse.observe(viewLifecycleOwner){
@@ -203,13 +207,15 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
     private fun toLogOut() {
         val option = NavOptions.Builder()
-            .setPopUpTo(R.id.nav_home, true)
+            .setPopUpTo(R.id.profileFragment, true)
             .build()
 
         viewModel.statusLogin(false)
         viewModel.getLoginStatus().observe(viewLifecycleOwner) {
             if (it == true) {
-                findNavController().navigate(R.id.action_profileFragment_to_splashFragment)
+                activity?.let { it ->
+                    val intent = Intent(it, MainActivity::class.java)
+                    it.startActivity(intent)}
             } else {
                 requireContext()
             }
@@ -244,9 +250,9 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         override fun onClick(v: View) {
         when (v.id) {
 
-            R.id.logout -> signOut()
-            R.id.logout -> revokeAccess()
-            R.id.logout -> toLogOut()
+            R.id.logout_profile -> signOut()
+            R.id.logout_profile -> revokeAccess()
+            R.id.logout_profile -> toLogOut()
         }
     }
 

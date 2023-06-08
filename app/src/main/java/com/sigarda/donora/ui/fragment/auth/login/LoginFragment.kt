@@ -34,13 +34,14 @@ import com.sigarda.donora.data.network.models.auth.create.CreateProfileRequestBo
 import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
 import com.sigarda.donora.data.network.models.auth.login.requestbody.LoginRequestBody
 import com.sigarda.donora.databinding.FragmentLoginBinding
+import com.sigarda.donora.ui.fragment.base.BaseFragment
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import org.chromium.base.ContextUtils.getApplicationContext
 
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(), View.OnClickListener {
+class LoginFragment : BaseFragment(), View.OnClickListener {
 
     private val RC_SIGN_IN = 9001
     private var mGoogleSignInClient : GoogleSignInClient? = null
@@ -84,6 +85,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         oneTapClient()
         observeDataLogin()
         observeDataLoginGoogle()
+
+        bottomNavigationViewVisibility = View.GONE
 
         binding.btnLogin.setOnClickListener (){ loginUser() }
         binding.btnLoginguest.setOnClickListener (){ navigateToHome() }

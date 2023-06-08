@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="330dp"
+    android:layout_height="90dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:backgroundTint="#ffffff"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="7dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@color/red"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iconrs"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="13dp"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@drawable/ic_hospital" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="210dp"
+            android:layout_height="match_parent"
+            android:paddingTop="26dp"
+            android:paddingLeft="15dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/UTD"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/rbold"
+                android:text="UTD PMI Kota Surabaya"
+                android:textColor="#2B2D42"
+                android:textSize="12dp" />
+
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/pinlokasi"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/alamat"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rmedium"
+                    android:text="Graha Pena, A. Yani, Surabaya"
+                    android:textColor="#2B2D42"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_circle"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tanggal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/rbold"
+                android:textSize="10dp"
+                android:textColor="#ffffff"
+                android:text="20" />
+
+            <TextView
+                android:id="@+id/bulan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:fontFamily="@font/rmedium"
+                android:textSize="9dp"
+                android:textColor="#ffffff"
+                android:text="Des" />
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -22,7 +22,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
             <ImageView
                 android:id="@+id/back"
                 android:layout_width="wrap_content"
@@ -36,11 +37,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:layout_width="18dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="300dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/ic_bell"
+                android:id="@+id/logout_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="320dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_logout_white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/photprofile"

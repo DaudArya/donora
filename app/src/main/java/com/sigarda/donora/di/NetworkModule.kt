@@ -1,6 +1,7 @@
 package com.sigarda.jurnalkas.di
 
 import com.sigarda.donora.data.network.service.AuthApiInterface
+import com.sigarda.donora.data.network.service.MainApiInterface
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,5 +62,10 @@ object NetworkModule {
     @Provides
     fun provideAuthApi(retrofit: Retrofit): AuthApiInterface =
         retrofit.create(AuthApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun provideMainApi(retrofit: Retrofit): MainApiInterface =
+        retrofit.create(MainApiInterface::class.java)
 
 }

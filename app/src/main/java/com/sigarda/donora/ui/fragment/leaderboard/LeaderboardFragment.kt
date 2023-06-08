@@ -10,11 +10,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.sigarda.donora.R
 import com.sigarda.donora.databinding.FragmentLeaderboardBinding
 import com.sigarda.donora.databinding.FragmentProfileBinding
+import com.sigarda.donora.ui.fragment.base.BaseFragment
 import com.sigarda.donora.ui.fragment.profile.ProfileViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LeaderboardFragment : Fragment() {
+class LeaderboardFragment : BaseFragment() {
 
     private var _binding: FragmentLeaderboardBinding? = null
     private var mGoogleSignInClient : GoogleSignInClient? = null
@@ -40,6 +41,8 @@ class LeaderboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bottomNavigationViewVisibility = View.VISIBLE
     }
 
 }

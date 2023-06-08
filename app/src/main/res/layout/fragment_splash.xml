@@ -8,6 +8,15 @@
     tools:context=".ui.fragment.splash.SplashFragment">
 
     <ImageView
+        android:id="@+id/iv_level"
+        android:layout_width="385dp"
+        android:layout_height="255dp"
+        android:src="@drawable/ic_all_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="50dp"
@@ -24,14 +33,14 @@
         android:id="@+id/pb_splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:outlineSpotShadowColor="@color/login"
         android:outlineAmbientShadowColor="@color/login"
-        app:layout_constraintBottom_toTopOf="@+id/tv_spalsh"
+        android:outlineSpotShadowColor="@color/login"
+        app:layout_constraintBottom_toTopOf="@+id/iv_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintVertical_bias="0.368" />
 
     <TextView
         android:id="@+id/tv_spalsh"

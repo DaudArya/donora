@@ -16,13 +16,14 @@ import com.sigarda.donora.R
 import com.sigarda.donora.databinding.FragmentEditProfileBinding
 import com.sigarda.donora.databinding.FragmentProfileBinding
 import com.sigarda.donora.ui.fragment.auth.login.LoginViewModel
+import com.sigarda.donora.ui.fragment.base.BaseFragment
 import com.sigarda.donora.ui.fragment.profile.ProfileViewModel
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class EditProfileFragment : Fragment() {
+class EditProfileFragment : BaseFragment() {
 
     private var _binding: FragmentEditProfileBinding? = null
     private var mGoogleSignInClient : GoogleSignInClient? = null
@@ -50,10 +51,15 @@ class EditProfileFragment : Fragment() {
         val v: View = inflater.inflate(R.layout.fragment_edit_profile, container, false)
         val spinner = v.findViewById<View>(R.id.bloodType) as Spinner
         val adapter = ArrayAdapter(
-            this.requireActivity()!!, android.R.layout.simple_spinner_dropdown_item, bloodType
+            this.requireActivity()!!, android.R.layout.simple_spinner_dropdown_item, golDar
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
+        
+        bottomNavigationViewVisibility = View.GONE
+
+        return v
+        return super.onCreateView(inflater, container, savedInstanceState)
 
         // Inflate the layout for this fragment
         _binding = FragmentEditProfileBinding.inflate(inflater, container, false)
@@ -62,6 +68,7 @@ class EditProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentEditProfileBinding.bind(view)
 
         getProfile()
         observeGet()
@@ -188,7 +195,7 @@ class EditProfileFragment : Fragment() {
     }
 
 
-    var bloodType = arrayOf(
+    var golDar = arrayOf(
         "A+","A-","B+","B-","O+","O-","AB+","AB-"
     )
 

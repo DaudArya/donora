@@ -30,12 +30,13 @@ import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthReques
 import com.sigarda.donora.data.network.models.auth.register.requestbody.RegisterRequestBody
 import com.sigarda.donora.databinding.FragmentRegisterBinding
 import com.sigarda.donora.ui.fragment.auth.login.LoginViewModel
+import com.sigarda.donora.ui.fragment.base.BaseFragment
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import org.chromium.base.ContextUtils
 
 @AndroidEntryPoint
-class RegisterFragment : Fragment() {
+class RegisterFragment : BaseFragment() {
 
     private val RC_SIGN_IN = 9001
     private var mGoogleSignInClient : GoogleSignInClient? = null
@@ -77,6 +78,8 @@ class RegisterFragment : Fragment() {
             .requestServerAuthCode("935126427076-jgcmqckpb2af307vrut7tfhng0j7itkd.apps.googleusercontent.com")
             .requestEmail()
             .build()
+
+        bottomNavigationViewVisibility = View.GONE
 
         mGoogleSignInClient = GoogleSignIn.getClient(this.requireContext(), gso);
 //        binding.loginGoogle.setOnClickListener(this);

@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.sigarda.donora.R
 import com.sigarda.donora.databinding.FragmentSplashBinding
+import com.sigarda.donora.ui.fragment.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
@@ -40,12 +41,17 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        bottomNavigationViewVisibility = View.GONE
         startSplashScreen()
     }
 
     private fun startSplashScreen() {
         binding.logo.alpha = 0f
-        binding.logo.animate().setDuration(1000).alpha(1f).withEndAction {
+        binding.ivLevel.alpha = 0f
+
+        binding.ivLevel.animate().setDuration(2000).alpha(1f)
+
+        binding.logo.animate().setDuration(2000).alpha(1f).withEndAction {
             checkCredential()
         }
     }

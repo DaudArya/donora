@@ -7,53 +7,81 @@
     android:background="#EDF2F4"
     tools:context=".ui.fragment.home.HomeFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/usernameHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Halo,Usename"
+            android:textColor="#D80032"
+            android:textSize="17dp"
+            android:textStyle="bold|italic"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView50"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/rbold"
-            android:text="Hai, User.\nSelamat Datang di Donora"
+            android:layout_marginStart="40dp"
+            android:text="Selamat Datang di Donora"
             android:textColor="#D80032"
             android:textSize="17dp"
             android:textStyle="bold|italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.173"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/usernameHeader" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/photprofile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/red"
+            android:layout_marginEnd="40dp"
+            app:cardCornerRadius="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/usernameHeader"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ava"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="200dp"
+                tools:src="@drawable/mask_group" />
+
+        </androidx.cardview.widget.CardView>
 
         <ImageView
-            android:id="@+id/imageView36"
-            android:layout_width="29dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.75"
+            android:id="@+id/notif_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintEnd_toStartOf="@+id/photprofile"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textView50"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_bellred" />
+            app:srcCompat="@drawable/ic_notification" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/information"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/card_home_donora"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView50"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintTop_toBottomOf="@+id/notif_home">
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -66,13 +94,13 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/ava"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/iv_title"
+                    android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="15dp"
-                    app:srcCompat="@drawable/mask_group" />
+                    app:srcCompat="@drawable/ic_god" />
 
                 <LinearLayout
                     android:layout_width="180dp"
@@ -80,12 +108,12 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView57"
+                        android:id="@+id/username"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/rbold"
-                        android:text="Daud Wakwaw"
+                        android:text="Daud Arya Rafa"
                         android:textColor="#2B2D42"
                         android:textSize="14sp" />
 
@@ -109,13 +137,13 @@
                                 app:srcCompat="@drawable/ic_lightning" />
 
                             <TextView
-                                android:id="@+id/textView58"
+                                android:id="@+id/tv_title"
                                 android:layout_width="105dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/rmedium"
                                 android:text="Dewa Darah"
-                                android:textColor="#2B2D42"
+                                android:textColor="@color/black"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
@@ -135,7 +163,7 @@
                                 app:srcCompat="@drawable/ic_throphy" />
 
                             <TextView
-                                android:id="@+id/textView59"
+                                android:id="@+id/tv_point"
                                 android:layout_width="40dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -149,7 +177,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textView60"
+                    android:id="@+id/tv_bloodType"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -194,7 +222,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView52"
+                        android:id="@+id/tv_total_donor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
@@ -223,7 +251,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView53"
+                        android:id="@+id/tv_last_donor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
@@ -251,7 +279,7 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/textView56"
+                        android:id="@+id/tv_next_donor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
@@ -267,9 +295,9 @@
                 android:id="@+id/bottom4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:layout_marginStart="27dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout5">
 
@@ -411,7 +439,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/banner"
             android:layout_width="400dp"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:layout_marginTop="40dp"
             android:background="@drawable/view_bg"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -421,34 +449,53 @@
             app:layout_constraintTop_toBottomOf="@+id/information"
             app:layout_constraintVertical_bias="0.0">
 
-            <LinearLayout
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/pb_banner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/rbold"
                     android:text="Sedang Dibutuhkan"
-                    android:textColor="#D80032" />
+                    android:textColor="#D80032"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_banner"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="20dp"
                     android:orientation="horizontal"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="7dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView"
                     tools:listitem="@layout/item_banner" />
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>

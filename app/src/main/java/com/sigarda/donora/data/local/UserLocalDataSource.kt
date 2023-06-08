@@ -7,22 +7,16 @@ interface UserLocalDataSource {
     suspend fun setUserLogin(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
     suspend fun SaveUserToken(isToken: String)
-
     suspend fun setUserName(isUsername: String)
     suspend fun getUserName(isUsername: String)
-
     suspend fun setFullName(isFullname: String)
     suspend fun getFullName(isFullname: String)
-
     suspend fun setPhoneNumber(isPhoneNumber: String)
     suspend fun getPhoneNumber(isPhoneNumber: String)
-
     suspend fun setNik(isNik: String)
     suspend fun getNik(isNik: String)
-
     suspend fun setGender(isGender: String)
     suspend fun getGender(isGender: String)
-
     suspend fun setDonorId(isDonorId: String)
     suspend fun getDonorId(isDonorId: String)
     fun getUserLoginStatus(): Flow<Boolean>

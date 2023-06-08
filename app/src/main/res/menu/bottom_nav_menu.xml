@@ -8,15 +8,14 @@
         android:title="Profile"
         android:icon="@drawable/ic_profilenav" />
 
-    <item android:id="@+id/placeholder"
+    <item android:id="@+id/stockFragment"
         android:title="." />
 
-    <item android:id="@+id/calendar"
+    <item android:id="@+id/scheduleFragment"
         android:title="Schedule"
         android:icon="@drawable/ic_calendarnav" />
 
-    <item android:id="@+id/leaderboard"
+    <item android:id="@+id/leaderboardFragment"
         android:title="Leaderboard"
         android:icon="@drawable/ic_leaderboardnav" />
-
 </menu>

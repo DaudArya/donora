@@ -27,21 +27,6 @@ interface AuthRemoteDataSource {
     suspend fun getProfile(token : String): GetProfileResponse
     suspend fun updateProfile(token: String): UpdateProfileResponse
 
-//    suspend fun putProfile(
-//        username : RequestBody,
-//        fullName : RequestBody,
-//        blood_id : RequestBody ,
-//        village_id : RequestBody,
-//        nik : RequestBody,
-//        gender : RequestBody,
-//        phone_number : RequestBody,
-//        donor_code : RequestBody,
-//        age : RequestBody,
-//        address : RequestBody,
-//        image : MultipartBody.Part,
-//        token: String): UpdateProfileResponse
-
-
 }
 
 class AuthRemoteDataSourceImpl @Inject constructor(private val apiService: AuthApiInterface) :
