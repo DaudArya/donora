@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "907720460566",
-    "project_id": "donora-7e186",
-    "storage_bucket": "donora-7e186.appspot.com"
+    "project_number": "870304713038",
+    "project_id": "donorav1",
+    "storage_bucket": "donorav1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:907720460566:android:94c2cf7eb2f7841f12a837",
+        "mobilesdk_app_id": "1:870304713038:android:4ba09608b3ff45d63a361f",
         "android_client_info": {
           "package_name": "com.sigarda.donora"
         }
       },
       "oauth_client": [
         {
-          "client_id": "935126427076-jgcmqckpb2af307vrut7tfhng0j7itkd.apps.googleusercontent.com",
+          "client_id": "870304713038-dgu1q41lek3ml397c470om9k3ljv7mf8.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA-643PI4FuvJtmtC8auKR8ki0OTYrxEEI"
+          "current_key": "AIzaSyDoGY5nihcMrdmRLMYb81jJF6pvHtcXxB4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "935126427076-jgcmqckpb2af307vrut7tfhng0j7itkd.apps.googleusercontent.com",
+              "client_id": "870304713038-dgu1q41lek3ml397c470om9k3ljv7mf8.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

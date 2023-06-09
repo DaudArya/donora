@@ -77,7 +77,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun getTicket(){
+    fun getBanner(){
         apiService.getBanner().enqueue(object : Callback<BannerResponse> {
             override fun onResponse(
                 call: Call<BannerResponse>,

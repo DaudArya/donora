@@ -4,7 +4,10 @@ import com.sigarda.donora.data.network.models.dashboard.banner.BannerResponse
 import com.sigarda.donora.data.network.models.dashboard.user.history.HistoryResponse
 import com.sigarda.donora.data.network.models.dashboard.user.schedule.ScheduleResponse
 import com.sigarda.donora.data.network.models.dashboard.user.title.TitleResponse
-import com.sigarda.donora.data.network.models.profile.getProfile.GetProfileResponse
+import com.sigarda.donora.data.network.models.leaderboard.bestplace.BestLeaderBoardResponse
+import com.sigarda.donora.data.network.models.leaderboard.commonplace.AllLeaderBoardResponse
+
+import com.sigarda.donora.data.network.models.schedule.ScheduleDonorResponse
 import com.sigarda.donora.data.network.service.MainApiInterface
 import retrofit2.Call
 import javax.inject.Inject
@@ -13,17 +16,36 @@ interface MainRemoteDataSource {
 
     suspend fun getBannner(): Call<BannerResponse>
 
+    suspend fun getScheduleDonor(): Call<ScheduleDonorResponse>
+    suspend fun getAllLeaderboard(): Call<AllLeaderBoardResponse>
+
+    suspend fun getBestLeaderboard(): Call<AllLeaderBoardResponse>
+
     suspend fun getHistory(token : String): HistoryResponse
 
     suspend fun getTitle(token : String): TitleResponse
 
     suspend fun getSchedule(token : String): ScheduleResponse
+
+
 }
 
 class MainRemoteDataSourceImpl @Inject constructor(private val apiService: MainApiInterface) :
     MainRemoteDataSource {
     override suspend fun getBannner(): Call<BannerResponse> {
         return apiService.getBanner()
+    }
+
+    override suspend fun getScheduleDonor(): Call<ScheduleDonorResponse> {
+        return apiService.getScheduleDonor()
+    }
+
+    override suspend fun getAllLeaderboard(): Call<AllLeaderBoardResponse> {
+        return apiService.getAllLeaderboard()
+    }
+
+    override suspend fun getBestLeaderboard(): Call<AllLeaderBoardResponse> {
+        return apiService.getBestLeaderboard()
     }
 
     override suspend fun getHistory(token: String): HistoryResponse {
@@ -37,4 +59,6 @@ class MainRemoteDataSourceImpl @Inject constructor(private val apiService: MainA
     override suspend fun getSchedule(token: String): ScheduleResponse {
         return apiService.getSchedule(token)
     }
+
+
 }

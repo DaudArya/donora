@@ -52,6 +52,7 @@ class SplashFragment : BaseFragment() {
         binding.ivLevel.animate().setDuration(2000).alpha(1f)
 
         binding.logo.animate().setDuration(2000).alpha(1f).withEndAction {
+            binding.logo.animate().rotationX(200F).alpha(1f)
             checkCredential()
         }
     }
@@ -66,6 +67,4 @@ class SplashFragment : BaseFragment() {
             }
         }
     }
-
-
 }

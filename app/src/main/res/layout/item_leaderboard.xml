@@ -13,7 +13,7 @@
         android:layout_height="100dp">
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/tv_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/rbold"
@@ -34,7 +34,7 @@
             android:backgroundTint="@color/grey_dark"
             app:cardCornerRadius="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintStart_toEndOf="@+id/tv_list"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
@@ -50,7 +50,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/iv_level"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     app:cardCornerRadius="200dp"
@@ -67,7 +67,7 @@
                 android:padding="15dp">
 
                 <TextView
-                    android:id="@+id/Detail"
+                    android:id="@+id/tv_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rbold"
@@ -77,7 +77,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/Tempat"
+                    android:id="@+id/tv_poin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/rmedium"
