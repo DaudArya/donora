@@ -13,14 +13,14 @@ import retrofit2.http.Header
 
 interface MainApiInterface {
 
-    @GET("requestBlood/accepted")
+    @GET("request-blood/accepted")
     fun getBanner() : Call<BannerResponse>
 
     @GET("donorSchedule")
     fun getScheduleDonor() : Call<ScheduleDonorResponse>
 
     @GET("user-profile/first-podium")
-    fun getBestLeaderboard() : Call<AllLeaderBoardResponse>
+    fun getBestLeaderboard() : Call<BestLeaderBoardResponse>
     @GET("user-profile/next-podium")
     fun getAllLeaderboard() : Call<AllLeaderBoardResponse>
 

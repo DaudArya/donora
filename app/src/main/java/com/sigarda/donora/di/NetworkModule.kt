@@ -1,6 +1,7 @@
 package com.sigarda.jurnalkas.di
 
 import com.sigarda.donora.data.network.service.AuthApiInterface
+import com.sigarda.donora.data.network.service.FCMInterface
 import com.sigarda.donora.data.network.service.MainApiInterface
 import dagger.Module
 import dagger.Provides
@@ -10,14 +11,25 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class BaseUrl1
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class BaseUrl2
+
+
 
     const val BASE_URL = "https://donora.projectdira.my.id/public/api/"
+
 
 
     @Singleton
@@ -48,6 +60,7 @@ object NetworkModule {
 
     private val client = OkHttpClient.Builder().addInterceptor(logging).build()
 
+
     @Singleton
     @Provides
     fun provideRetrofit() : Retrofit =
@@ -67,5 +80,10 @@ object NetworkModule {
     @Provides
     fun provideMainApi(retrofit: Retrofit): MainApiInterface =
         retrofit.create(MainApiInterface::class.java)
+
+    @Singleton
+    @Provides
+    fun provideFCMApi(retrofit: Retrofit): FCMInterface =
+        retrofit.create(FCMInterface::class.java)
 
 }

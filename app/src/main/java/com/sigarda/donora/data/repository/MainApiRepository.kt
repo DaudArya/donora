@@ -20,7 +20,7 @@ interface MainApiRepository {
     suspend fun getBanner(): Resource<Call<BannerResponse>>
     suspend fun getScheduleDonor(): Resource<Call<ScheduleDonorResponse>>
     suspend fun getAllLeaderboard(): Resource<Call<AllLeaderBoardResponse>>
-    suspend fun getBestLeaderboard(): Resource<Call<AllLeaderBoardResponse>>
+    suspend fun getBestLeaderboard(): Resource<Call<BestLeaderBoardResponse>>
 
 }
 
@@ -64,7 +64,7 @@ class MainApiRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getBestLeaderboard(): Resource<Call<AllLeaderBoardResponse>> {
+    override suspend fun getBestLeaderboard(): Resource<Call<BestLeaderBoardResponse>> {
         return proceed {
             dataSource.getBestLeaderboard()
         }

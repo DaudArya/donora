@@ -1,14 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardColor"
+    android:gravity="center"
     tools:context=".ui.fragment.stock.StockFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:background="@color/red"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/rbold"
+            android:gravity="center"
+            android:text="Stock Darah"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:background="@color/cardColor"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_A_positive"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="A+"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_A_negative"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_margin="20dp"
+            android:text="A-"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardColor"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_B_positive"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="B+"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_B_negative"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="B-"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardColor"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_AB_positive"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="AB+"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_AB_negative"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="AB-"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/cardColor"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_O_positive"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:text="O+"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/blood_O_negative"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            android:layout_marginStart="20dp"
+            android:text="O-"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/red"
+            android:background="@drawable/view_blood_button"
+            android:elevation="10dp" />
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

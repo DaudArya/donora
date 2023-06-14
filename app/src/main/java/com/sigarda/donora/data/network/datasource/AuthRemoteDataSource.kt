@@ -20,12 +20,13 @@ import retrofit2.http.Part
 import javax.inject.Inject
 
 interface AuthRemoteDataSource {
-    suspend fun postLogin(loginRequestBody: LoginRequestBody): LoginUserResponse
-    suspend fun postRegister(registerRequestBody: RegisterRequestBody): RegisterResponse
-    suspend fun postLoginGoogle(googleAuthRequestBody: GoogleAuthRequestBody): LoginGoogleResponse
     suspend fun postCreateUser(token : String, createUserRequestBody: CreateProfileRequestBody): CreateProfileResponse
-    suspend fun getProfile(token : String): GetProfileResponse
+    suspend fun postLoginGoogle(googleAuthRequestBody: GoogleAuthRequestBody): LoginGoogleResponse
+    suspend fun postRegister(registerRequestBody: RegisterRequestBody): RegisterResponse
+    suspend fun postLogin(loginRequestBody: LoginRequestBody): LoginUserResponse
     suspend fun updateProfile(token: String): UpdateProfileResponse
+    suspend fun getProfile(token : String): GetProfileResponse
+
 
 }
 
@@ -54,9 +55,6 @@ class AuthRemoteDataSourceImpl @Inject constructor(private val apiService: AuthA
     override suspend fun updateProfile(token: String): UpdateProfileResponse {
         return apiService.putProfile(token)
     }
-
-
-
 
     override suspend fun postLogin(loginRequestBody: LoginRequestBody): LoginUserResponse {
         return apiService.postLogin(loginRequestBody)

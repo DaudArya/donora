@@ -9,28 +9,27 @@ import com.sigarda.donora.data.network.models.leaderboard.commonplace.AllLeaderB
 
 import com.sigarda.donora.data.network.models.schedule.ScheduleDonorResponse
 import com.sigarda.donora.data.network.service.MainApiInterface
+import com.sigarda.jurnalkas.di.NetworkModule
 import retrofit2.Call
 import javax.inject.Inject
 
 interface MainRemoteDataSource {
-
     suspend fun getBannner(): Call<BannerResponse>
 
     suspend fun getScheduleDonor(): Call<ScheduleDonorResponse>
     suspend fun getAllLeaderboard(): Call<AllLeaderBoardResponse>
 
-    suspend fun getBestLeaderboard(): Call<AllLeaderBoardResponse>
+    suspend fun getBestLeaderboard(): Call<BestLeaderBoardResponse>
 
     suspend fun getHistory(token : String): HistoryResponse
 
     suspend fun getTitle(token : String): TitleResponse
 
     suspend fun getSchedule(token : String): ScheduleResponse
-
-
 }
 
-class MainRemoteDataSourceImpl @Inject constructor(private val apiService: MainApiInterface) :
+class MainRemoteDataSourceImpl @Inject constructor(
+    private val apiService: MainApiInterface) :
     MainRemoteDataSource {
     override suspend fun getBannner(): Call<BannerResponse> {
         return apiService.getBanner()
@@ -44,7 +43,7 @@ class MainRemoteDataSourceImpl @Inject constructor(private val apiService: MainA
         return apiService.getAllLeaderboard()
     }
 
-    override suspend fun getBestLeaderboard(): Call<AllLeaderBoardResponse> {
+    override suspend fun getBestLeaderboard(): Call<BestLeaderBoardResponse> {
         return apiService.getBestLeaderboard()
     }
 
@@ -59,6 +58,4 @@ class MainRemoteDataSourceImpl @Inject constructor(private val apiService: MainA
     override suspend fun getSchedule(token: String): ScheduleResponse {
         return apiService.getSchedule(token)
     }
-
-
 }

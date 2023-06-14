@@ -27,6 +27,7 @@ import com.google.gson.Gson
 import com.sigarda.donora.data.network.models.profile.profile.Data
 import com.sigarda.donora.data.network.models.profile.profile.GetProfileUserResponse
 import com.sigarda.donora.ui.activity.MainActivity
+import com.sigarda.donora.ui.fragment.home.HomeViewModel
 
 @AndroidEntryPoint
 class ProfileFragment : Fragment(), View.OnClickListener {
@@ -36,6 +37,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding!!
     private val viewModel: ProfileViewModel by viewModels()
     private val authViewModel : LoginViewModel by viewModels()
+    private val levelViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +59,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         getProfile()
+        getHistory()
+        getTitle()
+
         observeGet()
+        observeGetHistory()
+        observeGetTitle()
+
 
         binding.profileImage.setImageResource(R.drawable.mask_group)
 
@@ -71,6 +79,69 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
 
+    }
+
+    private fun getTitle() {
+        authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            levelViewModel.getTitle("Bearer $it")
+        }
+    }
+
+    private fun getHistory() {
+        authViewModel.getDataStoreToken().observe(viewLifecycleOwner) {
+            levelViewModel.getHistory("Bearer $it")
+        }
+    }
+
+    private fun observeGetHistory(){
+        levelViewModel.getHistoryResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    binding.apply {
+
+                        val point = it.data?.data?.jumlah?.times(5).toString()
+                        pointUser.setText(point+" Poin")
+                    }
+                    Log.d("GetHistory", it.message.toString())
+                }
+                is Resource.Error -> {
+                }
+                is Resource.Loading ->{
+                }
+                else -> {}
+            }
+
+        }
+    }
+
+    private fun observeGetTitle(){
+        levelViewModel.getTitleResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Success ->{
+                    binding.apply {
+                        val title = it?.data?.message
+                        if (title == "Ksatria Darah"){
+                            titleUser.setText("Ksatria Darah")
+                        } else if (title == "Raja Darah"){
+                            titleUser.setText("Raja Darah")
+                        }else if (title == "Kaisar Darah"){
+                            titleUser.setText("Kaisar Darah")
+                        }else if (title == "Dewa Darah"){
+                            titleUser.setText("Dewa Darah")
+                        }else {
+                            titleUser.setText(it.message)
+                        }
+                    }
+                    Log.d("GetTitle", it.message.toString())
+                }
+                is Resource.Error -> {
+                }
+                is Resource.Loading ->{
+                }
+                else -> {}
+            }
+
+        }
     }
 
 

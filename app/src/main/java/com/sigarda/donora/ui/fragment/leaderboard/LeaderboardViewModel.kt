@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.sigarda.donora.data.network.models.leaderboard.bestplace.BestLeaderBoardResponse
 import com.sigarda.donora.data.network.models.leaderboard.commonplace.AllLeaderBoardResponse
-import com.sigarda.donora.data.network.models.leaderboard.commonplace.Data
 import com.sigarda.donora.data.network.service.MainApiInterface
 import com.sigarda.donora.data.repository.MainApiRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,11 +21,11 @@ class LeaderboardViewModel@Inject constructor(
 
     ) : ViewModel() {
 
-    private val _leaderboard = MutableLiveData<List<Data>>()
-    val getAllLeaderBoardResponse: LiveData<List<Data>> = _leaderboard
+    private val _leaderboard = MutableLiveData<List<com.sigarda.donora.data.network.models.leaderboard.commonplace.Data>>()
+    val getAllLeaderBoardResponse: LiveData<List<com.sigarda.donora.data.network.models.leaderboard.commonplace.Data>> = _leaderboard
 
-    private val _bestLeaderboard = MutableLiveData<List<Data>>()
-    val getBestLeaderBoardResponse: LiveData<List<Data>> = _bestLeaderboard
+    private val _bestLeaderboard = MutableLiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>>()
+    val getBestLeaderBoardResponse: LiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>> = _bestLeaderboard
 
     fun getAllLeaderboard(){
         apiService.getAllLeaderboard().enqueue(object : Callback<AllLeaderBoardResponse> {
@@ -34,7 +34,7 @@ class LeaderboardViewModel@Inject constructor(
                 response: Response<AllLeaderBoardResponse>
             ) {
                 if (response.isSuccessful) {
-                    _leaderboard.postValue(response.body()!!.data as List<Data>?)
+                    _leaderboard.postValue(response.body()!!.data as List<com.sigarda.donora.data.network.models.leaderboard.commonplace.Data>?)
                 }
             }
             override fun onFailure(call: Call<AllLeaderBoardResponse>, t: Throwable) {
@@ -44,16 +44,16 @@ class LeaderboardViewModel@Inject constructor(
     }
 
     fun getBestLeaderboard(){
-        apiService.getBestLeaderboard().enqueue(object : Callback<AllLeaderBoardResponse> {
+        apiService.getBestLeaderboard().enqueue(object : Callback<BestLeaderBoardResponse> {
             override fun onResponse(
-                call: Call<AllLeaderBoardResponse>,
-                response: Response<AllLeaderBoardResponse>
+                call: Call<BestLeaderBoardResponse>,
+                response: Response<BestLeaderBoardResponse>
             ) {
                 if (response.isSuccessful) {
-                    _leaderboard.postValue(response.body()!!.data as List<Data>?)
+                    _bestLeaderboard.postValue(response.body()!!.data as List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>?)
                 }
             }
-            override fun onFailure(call: Call<AllLeaderBoardResponse>, t: Throwable) {
+            override fun onFailure(call: Call<BestLeaderBoardResponse>, t: Throwable) {
                 Log.e("Error : ", "onFailure: ${t.message}")
             }
         })

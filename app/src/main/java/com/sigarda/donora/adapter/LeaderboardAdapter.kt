@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.sigarda.donora.R
 import com.sigarda.donora.data.network.models.leaderboard.commonplace.Data
+import com.sigarda.donora.databinding.ItemBestplaceLeaderboardBinding
 import com.sigarda.donora.databinding.ItemLeaderboardBinding
 import com.sigarda.donora.databinding.ItemScheduleBinding
 import kotlin.reflect.KFunction1
 
 class LeaderboardAdapter (private val onClick: KFunction1<Data, Unit>) :
-    ListAdapter<Data, LeaderboardAdapter.ViewHolder>(DIFF_CALLBACK) {
+    ListAdapter<Data, LeaderboardAdapter.ViewHolder>(DIFF_CALLBACK)  {
 
     inner class ViewHolder(private val binding: ItemLeaderboardBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -22,25 +23,31 @@ class LeaderboardAdapter (private val onClick: KFunction1<Data, Unit>) :
 
                 tvUsername.text = item.name
                 tvPoin.text = item.point.toString() + " Points"
-                tvList.text = position.plus(1).toString()
+                tvList.text = position.plus((3)+1).toString()
+
+
                 val point = item.point
 
                 if (point >= 50){
                     ivLevel.setImageResource(R.drawable.ic_knight)
-                }else if (point >= 100){
-                    ivLevel.setImageResource(R.drawable.ic_king)
-                }else if (point >= 200){
-                    ivLevel.setImageResource(R.drawable.ic_emperor)
-                }else if (point >= 300){
-                    ivLevel.setImageResource(R.drawable.ic_god)
                 }else{
                     ivLevel.setImageResource(R.drawable.ic_knight)
+                }
+                if (point >= 100){
+                    ivLevel.setImageResource(R.drawable.ic_king)
+                }
+                if (point >= 200){
+                    ivLevel.setImageResource(R.drawable.ic_emperor)
+                }
+                if (point >= 300){
+                    ivLevel.setImageResource(R.drawable.ic_god)
                 }
 
 
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeaderboardAdapter.ViewHolder {
         val binding =

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_nav_home_to_bannerFragment"
             app:destination="@id/bannerFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_stockFragment"
+            app:destination="@id/stockFragment" />
     </fragment>
 
     <fragment
@@ -91,7 +94,11 @@
         android:id="@+id/leaderboardFragment"
         android:name="com.sigarda.donora.ui.fragment.leaderboard.LeaderboardFragment"
         android:label="fragment_leaderboard"
-        tools:layout="@layout/fragment_leaderboard" />
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboardFragment_to_leaderboardProfileFragment"
+            app:destination="@id/leaderboardProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/stockFragment"
         android:name="com.sigarda.donora.ui.fragment.stock.StockFragment"
@@ -113,5 +120,20 @@
         <action
             android:id="@+id/action_bannerFragment_to_nav_home"
             app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardProfileFragment"
+        android:name="com.sigarda.donora.ui.fragment.profile.LeaderboardProfileFragment"
+        android:label="fragment_leaderboard_profile"
+        tools:layout="@layout/fragment_leaderboard_profile" >
+        <argument
+            android:name="leaderboardDetails"
+            app:argType="com.sigarda.donora.data.network.models.leaderboard.commonplace.Data" />
+        <action
+            android:id="@+id/action_leaderboardProfileFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <argument
+            android:name="bestLeaderboardDetails"
+            app:argType="com.sigarda.donora.data.network.models.leaderboard.bestplace.Data" />
     </fragment>
 </navigation>

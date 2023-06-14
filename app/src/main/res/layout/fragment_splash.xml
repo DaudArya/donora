@@ -7,14 +7,6 @@
     android:background="@color/red"
     tools:context=".ui.fragment.splash.SplashFragment">
 
-    <ImageView
-        android:id="@+id/iv_level"
-        android:layout_width="385dp"
-        android:layout_height="255dp"
-        android:src="@drawable/ic_all_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
@@ -35,7 +27,7 @@
         android:layout_height="wrap_content"
         android:outlineAmbientShadowColor="@color/login"
         android:outlineSpotShadowColor="@color/login"
-        app:layout_constraintBottom_toTopOf="@+id/iv_level"
+        app:layout_constraintBottom_toTopOf="@+id/tv_spalsh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
