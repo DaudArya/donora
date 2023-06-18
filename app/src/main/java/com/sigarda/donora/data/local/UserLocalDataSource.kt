@@ -7,6 +7,9 @@ interface UserLocalDataSource {
     suspend fun setUserLogin(isLogin: Boolean)
     suspend fun setUserToken(isToken: String)
     suspend fun SaveUserToken(isToken: String)
+
+    suspend fun setFCMToken(isToken: String)
+    suspend fun getFCMToken(isToken: String)
     suspend fun setUserName(isUsername: String)
     suspend fun getUserName(isUsername: String)
     suspend fun setFullName(isFullname: String)
@@ -34,6 +37,14 @@ class UserLocalDataSourceImpl @Inject constructor(
 
     override suspend fun SaveUserToken(isToken: String) {
         userDataStore.GetToken(isToken)
+    }
+
+    override suspend fun setFCMToken(isToken: String) {
+        userDataStore.setTokenFCM(isToken)
+    }
+
+    override suspend fun getFCMToken(isToken: String) {
+        userDataStore.GetTokenFCM(isToken)
     }
 
     override suspend fun setUserName(isUsername: String) {

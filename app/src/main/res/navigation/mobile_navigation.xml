@@ -103,12 +103,20 @@
         android:id="@+id/stockFragment"
         android:name="com.sigarda.donora.ui.fragment.stock.StockFragment"
         android:label="fragment_stock"
-        tools:layout="@layout/fragment_stock" />
+        tools:layout="@layout/fragment_stock" >
+        <action
+            android:id="@+id/action_stockFragment_to_bloodFragment"
+            app:destination="@id/bloodFragment" />
+    </fragment>
     <fragment
         android:id="@+id/scheduleFragment"
         android:name="com.sigarda.donora.ui.fragment.schedule.ScheduleFragment"
         android:label="fragment_schedule"
-        tools:layout="@layout/fragment_schedule" />
+        tools:layout="@layout/fragment_schedule" >
+        <action
+            android:id="@+id/action_scheduleFragment_to_scheduleUnitFragment"
+            app:destination="@id/scheduleUnitFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bannerFragment"
         android:name="com.sigarda.donora.ui.fragment.banner.BannerFragment"
@@ -135,5 +143,26 @@
         <argument
             android:name="bestLeaderboardDetails"
             app:argType="com.sigarda.donora.data.network.models.leaderboard.bestplace.Data" />
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleUnitFragment"
+        android:name="com.sigarda.donora.ui.fragment.schedule.ScheduleUnitFragment"
+        android:label="fragment_schedule_unit"
+        tools:layout="@layout/fragment_schedule_unit" >
+        <action
+            android:id="@+id/action_scheduleUnitFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+        <argument
+            android:name="ScheduleDonorDetail"
+            app:argType="com.sigarda.donora.data.network.models.schedule.Data" />
+    </fragment>
+    <fragment
+        android:id="@+id/bloodFragment"
+        android:name="com.sigarda.donora.ui.fragment.stock.BloodFragment"
+        android:label="fragment_blood"
+        tools:layout="@layout/fragment_blood" >
+        <action
+            android:id="@+id/action_bloodFragment_to_stockFragment"
+            app:destination="@id/stockFragment" />
     </fragment>
 </navigation>

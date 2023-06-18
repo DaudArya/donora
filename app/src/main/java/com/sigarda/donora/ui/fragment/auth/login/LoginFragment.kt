@@ -29,6 +29,7 @@ import com.google.android.gms.common.api.Scope
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 import com.sigarda.donora.R
 import com.sigarda.donora.data.network.models.auth.create.CreateProfileRequestBody
 import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
@@ -41,7 +42,7 @@ import org.chromium.base.ContextUtils.getApplicationContext
 
 
 @AndroidEntryPoint
-class LoginFragment : BaseFragment(), View.OnClickListener {
+class  LoginFragment : BaseFragment(), View.OnClickListener {
 
     private val RC_SIGN_IN = 9001
     private var mGoogleSignInClient : GoogleSignInClient? = null
@@ -180,10 +181,16 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
                     // Got an ID token from Google. Use it to authenticate
                     // with your backend.
                     binding.pgGoogle.visibility = View.GONE
-                    val msg = "Helo : $name, Your Email : $email, Your idToken: $idToken"
-                    var tokenGoogle = "$idToken"
-                    viewModel.loginGoogle(parseFormIntoEntityGoogle(tokenGoogle))
+                    FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                        Log.d(TAG, "push: $token") 
+
+                        val tokenFCM = token
+                        val msg = "Helo : $name, Your Email : $email, Your idToken: $idToken, tokenFCM : $token"
+                        val tokenGoogle = "$idToken"
+
+                    viewModel.loginGoogle(parseFormIntoEntityGoogle(tokenGoogle,tokenFCM))
                     Log.d("one tap", msg)
+                    }
                 }
                 else -> {
                     // Shouldn't happen.
@@ -490,8 +497,8 @@ class LoginFragment : BaseFragment(), View.OnClickListener {
         return LoginRequestBody(username, password)
     }
 
-    private fun parseFormIntoEntityGoogle(idToken: String): GoogleAuthRequestBody {
-        return GoogleAuthRequestBody(idToken)
+    private fun parseFormIntoEntityGoogle(idToken: String,deviceKey : String): GoogleAuthRequestBody {
+        return GoogleAuthRequestBody(idToken,deviceKey)
     }
 
     private fun parseFormIntoCreateUser(id: Int): CreateProfileRequestBody {

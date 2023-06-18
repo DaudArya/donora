@@ -21,11 +21,13 @@ class LeaderboardViewModel@Inject constructor(
 
     ) : ViewModel() {
 
+    private val _bestLeaderboard = MutableLiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>>()
+    val getBestLeaderBoardResponse: LiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>> = _bestLeaderboard
+
+
     private val _leaderboard = MutableLiveData<List<com.sigarda.donora.data.network.models.leaderboard.commonplace.Data>>()
     val getAllLeaderBoardResponse: LiveData<List<com.sigarda.donora.data.network.models.leaderboard.commonplace.Data>> = _leaderboard
 
-    private val _bestLeaderboard = MutableLiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>>()
-    val getBestLeaderBoardResponse: LiveData<List<com.sigarda.donora.data.network.models.leaderboard.bestplace.Data>> = _bestLeaderboard
 
     fun getAllLeaderboard(){
         apiService.getAllLeaderboard().enqueue(object : Callback<AllLeaderBoardResponse> {

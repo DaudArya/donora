@@ -6,15 +6,13 @@ import java.io.Serializable
 
 
 @Parcelize
-data class Data(
+data class VendorProfile(
     val address: String,
     val created_at: String,
     val id: Int,
-    val time_end: String,
-    val time_start: String,
+    val name: String,
+    val phone_number: String,
     val updated_at: String,
-    val vendor_profile: VendorProfile,
-    val vendor_profile_id: String,
-    val village: Village,
+    val user_id: String,
     val village_id: String
 ) : Parcelable

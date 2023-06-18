@@ -25,9 +25,9 @@
 
         <ImageView
             android:id="@+id/toEditProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/_icon__edit_"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_edit_profile"
             android:layout_gravity="center"
             android:layout_marginStart="230dp"/>
 
@@ -41,14 +41,15 @@
         android:textStyle="bold"
         android:textSize="12sp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/fullName"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"
@@ -65,14 +66,15 @@
         android:textSize="12sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_phoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/phoneNumber"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"
@@ -89,14 +91,15 @@
         android:textSize="12sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_Nik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/nik"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"
@@ -114,14 +117,15 @@
         android:textSize="12sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/gender"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
 
     <View
         android:layout_width="350dp"
@@ -139,14 +143,15 @@
         android:textSize="12sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/age"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"
@@ -163,14 +168,15 @@
         android:textSize="12sp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"/>
+
     <TextView
         android:id="@+id/tv_donorId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="-"
         android:textColor="@color/black"
-        android:text="@string/donorCode"
-        android:textSize="14sp"
-        android:layout_marginStart="20dp"/>
+        android:textSize="14sp" />
     <View
         android:layout_width="350dp"
         android:layout_height="1dp"

@@ -14,12 +14,54 @@ class SchdeduleDonorAdapter (private val onClick: KFunction1<Data, Unit>) :
 
     inner class ViewHolder(private val binding: ItemScheduleBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Data) {
+        fun bind(items: Data) {
             binding.apply {
 
+                val uptdName = items.vendor_profile.name
 
+                val jadwal = items.time_start
 
-
+                UTD.text = uptdName
+                alamat.text = items.address
+                tanggal.text = jadwal.dropLast(9).drop(8)
+                val month = jadwal.dropLast(12).drop(5)
+                if (month == "01"){
+                    bulan.text = "JAN"
+                }
+                if (month == "02"){
+                    bulan.text = "FEB"
+                }
+                if (month == "03"){
+                    bulan.text = "MAR"
+                }
+                if (month == "04"){
+                    bulan.text = "APR"
+                }
+                if (month == "05"){
+                    bulan.text = "MAY"
+                }
+                if (month == "06"){
+                    bulan.text = "JUN"
+                }
+                if (month == "07"){
+                    bulan.text = "JUL"
+                }
+                if (month == "08"){
+                    bulan.text = "AGU"
+                }
+                if (month == "09"){
+                    bulan.text = "SEP"
+                }
+                if (month == "10"){
+                    bulan.text = "OKT"
+                }
+                if (month == "11"){
+                    bulan.text = "NOV"
+                }
+                if (month == "12"){
+                    bulan.text = "DES"
+                }
+                root.setOnClickListener { onClick(items) }
             }
         }
     }

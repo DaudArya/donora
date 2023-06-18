@@ -1,5 +1,6 @@
 package com.sigarda.donora.data.repository
 
+import com.sigarda.donora.data.local.UserLocalDataSource
 import com.sigarda.donora.data.network.datasource.MainRemoteDataSource
 import com.sigarda.donora.data.network.models.dashboard.banner.BannerResponse
 import com.sigarda.donora.data.network.models.dashboard.user.history.HistoryResponse
@@ -18,6 +19,8 @@ interface MainApiRepository {
     suspend fun getHistory(token : String): Resource<HistoryResponse>
     suspend fun getSchedule(token : String): Resource<ScheduleResponse>
     suspend fun getBanner(): Resource<Call<BannerResponse>>
+    suspend fun setFCMToken(isToken: String)
+    suspend fun getFCMToken(isToken: String)
     suspend fun getScheduleDonor(): Resource<Call<ScheduleDonorResponse>>
     suspend fun getAllLeaderboard(): Resource<Call<AllLeaderBoardResponse>>
     suspend fun getBestLeaderboard(): Resource<Call<BestLeaderBoardResponse>>
@@ -25,6 +28,7 @@ interface MainApiRepository {
 }
 
 class MainApiRepositoryImpl @Inject constructor(
+    private val userLocalDataSource: UserLocalDataSource,
     private val dataSource: MainRemoteDataSource
  ) :
     MainApiRepository {
@@ -50,6 +54,13 @@ class MainApiRepositoryImpl @Inject constructor(
         return proceed {
             dataSource.getBannner()
         }
+    }
+    override suspend fun setFCMToken(isToken: String) {
+        return userLocalDataSource.setFCMToken(isToken)
+    }
+
+    override suspend fun getFCMToken(isToken: String) {
+        return userLocalDataSource.getFCMToken(isToken)
     }
 
     override suspend fun getScheduleDonor(): Resource<Call<ScheduleDonorResponse>> {

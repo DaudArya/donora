@@ -82,6 +82,19 @@ class UserDataStoreManager @Inject constructor(@ApplicationContext private val c
         }
     }
 
+    suspend fun GetTokenFCM(token: String) {
+        context.userDataStore.edit {
+            it[TOKEN_FCM] = token
+        }
+    }
+
+
+    suspend fun setTokenFCM(isToken: String) {
+        context.userDataStore.edit { preferences ->
+            preferences[TOKEN_FCM] = isToken
+        }
+    }
+
 
     suspend fun setToken(isToken: String) {
         context.userDataStore.edit { preferences ->
@@ -142,6 +155,7 @@ class UserDataStoreManager @Inject constructor(@ApplicationContext private val c
 
         private val USERNAME = stringPreferencesKey("username_key")
         private val TOKEN = stringPreferencesKey("token")
+        private val TOKEN_FCM = stringPreferencesKey("token_fcm")
         private val ID_USER = stringPreferencesKey("id_user")
         private val PASSWORD = stringPreferencesKey("password_key")
         private val EMAIL = stringPreferencesKey("email_key")

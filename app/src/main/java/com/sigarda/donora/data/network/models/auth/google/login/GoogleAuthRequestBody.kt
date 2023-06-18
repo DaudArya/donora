@@ -5,4 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class GoogleAuthRequestBody
     (@SerializedName("id_token")
      val id_token: String? = null,
+     @SerializedName("device_key")
+     val device_key: String? = null
+
 )

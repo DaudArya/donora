@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sigarda.donora.data.network.models.dashboard.banner.BannerResponse
 import com.sigarda.donora.data.network.models.schedule.Data
 import com.sigarda.donora.data.network.models.schedule.ScheduleDonorResponse
 import com.sigarda.donora.data.network.service.MainApiInterface

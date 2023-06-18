@@ -8,5 +8,7 @@ data class RegisterRequestBody (
     @SerializedName("email")
     val email: String? = null,
     @SerializedName("password")
-    val password: String? = null
+    val password: String? = null,
+    @SerializedName("device_key")
+    val device_key: String? = null
 )

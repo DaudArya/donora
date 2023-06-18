@@ -24,6 +24,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 import com.sigarda.donora.R
 import com.sigarda.donora.data.network.models.auth.create.CreateProfileRequestBody
 import com.sigarda.donora.data.network.models.auth.google.login.GoogleAuthRequestBody
@@ -38,15 +39,12 @@ import org.chromium.base.ContextUtils
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment() {
 
-    private val RC_SIGN_IN = 9001
+    private  val TAG = "Fragment Register"
     private var mGoogleSignInClient : GoogleSignInClient? = null
 
     private var oneTapClient: SignInClient? = null
     private var signUpRequest: BeginSignInRequest? = null
     private var signInRequest: BeginSignInRequest? = null
-
-    private val existUsername = listOf<String>("shawn","peter","raul","mendes")
-    private val existEmail = listOf<String>("shawn@test.com","peter@test.com","raul@test.com","mendes@test.com")
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
@@ -82,7 +80,7 @@ class RegisterFragment : BaseFragment() {
         bottomNavigationViewVisibility = View.GONE
 
         mGoogleSignInClient = GoogleSignIn.getClient(this.requireContext(), gso);
-//        binding.loginGoogle.setOnClickListener(this);
+
 
         oneTapClient()
         observeDataLoginGoogle()
@@ -92,6 +90,12 @@ class RegisterFragment : BaseFragment() {
         binding.registerGoogle.setOnClickListener (){ displaySignUp() }
         observeData()
 
+    }
+
+    fun push() {
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+            Log.d(TAG, "push: $token")
+            val tokenFCM = token}
     }
 
     private fun observeData() {
@@ -165,9 +169,16 @@ class RegisterFragment : BaseFragment() {
                 // with your backend.
                 binding.pgGoogle.visibility = View.GONE
                 val msg = "Helo : $name, Your Email : $email, Your idToken: $idToken"
+
                 var tokenGoogle = "$idToken"
-                viewModel.loginGoogle(parseFormIntoEntityGoogle(tokenGoogle))
+
+                FirebaseMessaging.getInstance().token.addOnSuccessListener { token ->
+                    Log.d(TAG, "push: $token")
+                    val tokenFCM = token
+
+                viewModel.loginGoogle(parseFormIntoEntityGoogle(tokenGoogle,tokenFCM))
                 Log.d("one tap", msg)
+                }
             }
             else -> {
                 // Shouldn't happen.
@@ -290,14 +301,16 @@ class RegisterFragment : BaseFragment() {
         val password = binding.etPasswordRegister.text.toString()
         val passwordConfirm = binding.etPasswordConfirmation.text.toString()
 
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { token -> Log.d(TAG, "push: $token")
+            val tokenFCM = token
 
-        registerUser(username,email,password)
-
+        registerUser(username,email,password,tokenFCM)
+        }
     }
 
-    private fun registerUser(username : String ,email : String ,password: String) {
-        viewModel.postRegisterUser(RegisterRequestBody(username = username, email = email, password = password))
-        Log.d("register", RegisterRequestBody(username = username, email = email, password = password).toString())
+    private fun registerUser(username : String ,email : String ,password: String, deviceKey: String) {
+        viewModel.postRegisterUser(RegisterRequestBody(username = username, email = email, password = password, device_key = deviceKey))
+        Log.d("register", RegisterRequestBody(username = username, email = email, password = password,device_key = deviceKey).toString())
     }
 
     private fun validateInput(): Boolean {
@@ -356,8 +369,8 @@ class RegisterFragment : BaseFragment() {
         findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
     }
 
-    private fun parseFormIntoEntityGoogle(idToken: String): GoogleAuthRequestBody {
-        return GoogleAuthRequestBody(idToken)
+    private fun parseFormIntoEntityGoogle(idToken: String, deviceKey : String): GoogleAuthRequestBody {
+        return GoogleAuthRequestBody(idToken,deviceKey)
     }
 
     private fun parseFormIntoCreateUser(id: Int): CreateProfileRequestBody {

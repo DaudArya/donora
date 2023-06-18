@@ -57,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController)
         setupSmoothBottomMenu()
 
+        binding.fab.setOnClickListener {
+            // Navigate to the desired destination
+            findNavController(R.id.hostFragment).navigate(R.id.stockFragment)
+        }
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
 
