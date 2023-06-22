@@ -44,6 +44,7 @@
 
     <string name="thanks" translatable="false">Terimakasih sudah menjadi pahlawan dengan menyumbangkan darah,Lihat reward dan histori donor kamu disini!</string>
     <string name="logout" translatable="false">Keluar</string>
+    <string name="select_date_button">Pilih Tanggal</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>

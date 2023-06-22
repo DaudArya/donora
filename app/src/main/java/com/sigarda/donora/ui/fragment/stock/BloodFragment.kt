@@ -2,12 +2,14 @@ package com.sigarda.donora.ui.fragment.stock
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.telecom.Call
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -59,8 +61,10 @@ class BloodFragment : BaseFragment() {
         sharedViewModel.sharedValue.observe(viewLifecycleOwner) { value ->
             val blood_id = value
             getBlood(blood_id)
+//            getBloodData(blood_id)
             initList()
             getBloodStock()
+//            observeData()
         }
 
 
@@ -72,7 +76,12 @@ class BloodFragment : BaseFragment() {
 
     private fun getBlood(id_blood : Int) {
         viewModel.listBloodData(BloodRequestBody(blood_id = id_blood))
+        binding.pbBlood.visibility = View.GONE
     }
+    private fun getBloodData(id_blood : Int) {
+        viewModel.getBloodData(BloodRequestBody(blood_id = id_blood))
+    }
+
 
     private fun initList() {
         binding.rvBlood.apply {
@@ -98,11 +107,11 @@ class BloodFragment : BaseFragment() {
 
 
 
-    private fun onClicked(banner: ProductData) {
-//        viewModel.getAllLeaderBoardResponse.observe(viewLifecycleOwner) { result ->
-//            val direction = LeaderboardFragmentDirections.actionLeaderboardFragmentToLeaderboardProfileFragment(banner)
-//            findNavController().navigate(direction)
-//        }
+    private fun onClicked(blood: ProductData) {
+        viewModel.getBloodResponse.observe(viewLifecycleOwner) { result ->
+            val direction = BloodFragmentDirections.actionBloodFragmentToVendorBloodFragment(blood)
+            findNavController().navigate(direction)
+        }
     }
 
 }

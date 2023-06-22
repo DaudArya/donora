@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -178,12 +177,36 @@ class HomeFragment : BaseFragment() {
                         }else{
                             username.setText("${it.data?.data?.name}")
                         }
+                        val poin = it.data?.data?.point.toString()
+                        tvPoint.setText(poin + " Point")
 
-                        val bloodType = it.data?.data?.blood
+                        val bloodType = it.data?.data?.blood_id
                         if (bloodType == null ){
                             tvBloodType.setText("-")
-                        }else{
-                            tvBloodType.setText("${it.data?.data?.blood}")
+                        }
+                        if (bloodType == "1"){
+                            tvBloodType.setText("A+")
+                        }
+                        if (bloodType == "2"){
+                            tvBloodType.setText("A-")
+                        }
+                        if (bloodType == "3"){
+                            tvBloodType.setText("B+")
+                        }
+                        if (bloodType == "4"){
+                            tvBloodType.setText("B-")
+                        }
+                        if (bloodType == "5"){
+                            tvBloodType.setText("AB+")
+                        }
+                        if (bloodType == "6"){
+                            tvBloodType.setText("AB-")
+                        }
+                        if (bloodType == "7"){
+                            tvBloodType.setText("O+")
+                        }
+                        if (bloodType == "8"){
+                            tvBloodType.setText("O-")
                         }
 
                         val avatar = it.data?.data?.profile_picture
@@ -267,7 +290,7 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun observeGetHistory(){
-        viewModel.getHistoryResponse.observe(viewLifecycleOwner){
+        viewModel.getPastDonorResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
                     binding.apply {
@@ -275,8 +298,6 @@ class HomeFragment : BaseFragment() {
                         tvLastDonor.setText(last_donor)
                         val total_donor = it.data?.data?.jumlah.toString()
                         tvTotalDonor.setText(total_donor)
-                        val point = it.data?.data?.jumlah?.times(5).toString()
-                        tvPoint.setText(point+" Poin")
                     }
                     Log.d("GetHistory", it.message.toString())
                 }

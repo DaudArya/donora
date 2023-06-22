@@ -4,19 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.sigarda.donora.data.local.UserDataStoreManager
 import com.sigarda.donora.data.network.models.auth.login.response.LoginUserResponse
 import com.sigarda.donora.data.network.models.dashboard.banner.BannerResponse
 import com.sigarda.donora.data.network.models.dashboard.banner.Data
-import com.sigarda.donora.data.network.models.dashboard.user.history.HistoryResponse
+import com.sigarda.donora.data.network.models.dashboard.user.history.PastDonorResponse
 import com.sigarda.donora.data.network.models.dashboard.user.schedule.ScheduleResponse
 import com.sigarda.donora.data.network.models.dashboard.user.title.TitleResponse
-import com.sigarda.donora.data.network.models.profile.getProfile.GetProfileResponse
-import com.sigarda.donora.data.network.service.AuthApiInterface
 import com.sigarda.donora.data.network.service.MainApiInterface
-import com.sigarda.donora.data.repository.AuthApiRepository
 import com.sigarda.donora.data.repository.MainApiRepository
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,8 +34,8 @@ class HomeViewModel @Inject constructor(
     private var _postLoginUserResponse = MutableLiveData<Resource<LoginUserResponse>>()
     val postLoginUserResponse: LiveData<Resource<LoginUserResponse>> get() = _postLoginUserResponse
 
-    private var _historyResponse = MutableLiveData<Resource<HistoryResponse>>()
-    val getHistoryResponse: LiveData<Resource<HistoryResponse>> get() = _historyResponse
+    private var _pastDonorResponse = MutableLiveData<Resource<PastDonorResponse>>()
+    val getPastDonorResponse: LiveData<Resource<PastDonorResponse>> get() = _pastDonorResponse
 
     private var _scheduleResponse = MutableLiveData<Resource<ScheduleResponse>>()
     val getScheduleResponse: LiveData<Resource<ScheduleResponse>> get() = _scheduleResponse
@@ -72,7 +68,7 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val historyGet = mainApiRepository.getHistory(token)
             viewModelScope.launch(Dispatchers.Main) {
-                _historyResponse.postValue(historyGet)
+                _pastDonorResponse.postValue(historyGet)
             }
         }
     }

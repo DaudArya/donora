@@ -17,6 +17,7 @@ class BloodAdapter(private val onClick: KFunction1<ProductData, Unit>) :
         fun bind(item: ProductData) {
             binding.apply {
 
+                tvId.text = item.product_Blood_id.toString()
                 tvNameBlood.text = item.product_name
                 tvTotalStock.text = item.stock_product.toString()
 

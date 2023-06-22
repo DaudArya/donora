@@ -11,10 +11,10 @@
             android:id="@+id/usernameHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Halo,Usename"
+            android:text="Halo,----"
             android:textColor="#D80032"
             android:textSize="17dp"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
             android:text="Selamat Datang di Donora"
             android:textColor="#D80032"
             android:textSize="17dp"
-            android:textStyle="bold|italic"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -98,9 +98,9 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
+                    android:layout_margin="10dp"
                     android:layout_marginEnd="15dp"
-                    app:srcCompat="@drawable/ic_god" />
+                    app:srcCompat="@drawable/ic_loading" />
 
                 <LinearLayout
                     android:layout_width="180dp"
@@ -113,19 +113,20 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/rbold"
-                        android:text="Daud Arya Rafa"
+                        android:text="---------"
                         android:textColor="#2B2D42"
                         android:textSize="14sp" />
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:layout_marginEnd="30dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -133,25 +134,24 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="3dp"
-                                android:layout_weight="1"
+                                android:layout_marginEnd="5dp"
                                 app:srcCompat="@drawable/ic_lightning" />
 
                             <TextView
                                 android:id="@+id/tv_title"
-                                android:layout_width="105dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/rmedium"
-                                android:text="Dewa Darah"
+                                android:text=" ----------"
                                 android:textColor="@color/black"
                                 android:textSize="12sp" />
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="120dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="right|center"
+                            android:gravity="center"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -164,11 +164,11 @@
 
                             <TextView
                                 android:id="@+id/tv_point"
-                                android:layout_width="40dp"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center_horizontal"
                                 android:fontFamily="@font/rmedium"
-                                android:text="21 Poin"
+                                android:text="----------"
                                 android:textColor="#2B2D42"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -185,28 +185,27 @@
                     android:layout_marginEnd="20dp"
                     android:fontFamily="@font/rbold"
                     android:gravity="center"
-                    android:text="AB+"
+                    android:text="---"
                     android:textColor="#D80032"
-                    android:textSize="22dp" />
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingLeft="30dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <LinearLayout
                     android:layout_width="90dp"
                     android:layout_height="60dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/card_kembar3"
                     android:orientation="vertical"
                     android:paddingTop="12dp">
@@ -227,7 +226,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
                         android:gravity="center"
-                        android:text="0 Kali"
+                        android:text="-"
                         android:textColor="#2B2D42"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -235,7 +234,7 @@
                 <LinearLayout
                     android:layout_width="115dp"
                     android:layout_height="60dp"
-                    android:layout_marginRight="12dp"
+                    android:layout_marginEnd="10dp"
                     android:background="@drawable/card_kembar3"
                     android:orientation="vertical"
                     android:paddingTop="12dp">
@@ -256,7 +255,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
                         android:gravity="center"
-                        android:text="9 Mei 2023"
+                        android:text="-"
                         android:textColor="#2B2D42"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -284,7 +283,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/rmedium"
                         android:gravity="center"
-                        android:text="9 Agustus 2023"
+                        android:text="-"
                         android:textColor="#2B2D42"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -293,24 +292,24 @@
 
             <LinearLayout
                 android:id="@+id/bottom4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
                 android:layout_marginTop="20dp"
                 android:orientation="horizontal"
+                android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout5">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="34dp"
                         android:backgroundTint="#D80032"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="5dp">
@@ -318,7 +317,7 @@
                         <ImageView
                             android:id="@+id/imageView42"
                             android:layout_width="wrap_content"
-                            android:layout_height="21dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             app:srcCompat="@drawable/ic_donation" />
                     </androidx.cardview.widget.CardView>
@@ -338,20 +337,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginRight="34dp"
                         android:backgroundTint="#D80032"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="5dp">
 
                         <ImageView
                             android:id="@+id/imageView43"
-                            android:layout_width="30dp"
-                            android:layout_height="34dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             app:srcCompat="@drawable/ic_suntik" />
                     </androidx.cardview.widget.CardView>
@@ -371,20 +370,20 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="25dp"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:layout_marginRight="34dp"
                         android:backgroundTint="#D80032"
                         app:cardCornerRadius="10dp"
                         app:cardElevation="5dp">
 
                         <ImageView
                             android:id="@+id/imageView44"
-                            android:layout_width="23dp"
-                            android:layout_height="31dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             app:srcCompat="@drawable/ic_award" />
                     </androidx.cardview.widget.CardView>
@@ -402,8 +401,8 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
@@ -416,8 +415,8 @@
 
                         <ImageView
                             android:id="@+id/imageView45"
-                            android:layout_width="22dp"
-                            android:layout_height="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             app:srcCompat="@drawable/ic_info" />
                     </androidx.cardview.widget.CardView>
@@ -441,7 +440,7 @@
             android:id="@+id/banner"
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/view_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

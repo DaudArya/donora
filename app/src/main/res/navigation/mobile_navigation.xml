@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_nav_home_to_stockFragment"
             app:destination="@id/stockFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
 
     <fragment
@@ -80,6 +83,9 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -162,7 +168,62 @@
         android:label="fragment_blood"
         tools:layout="@layout/fragment_blood" >
         <action
+            android:id="@+id/action_bloodFragment_to_vendorBloodFragment"
+            app:destination="@id/vendorBloodFragment" />
+        <action
             android:id="@+id/action_bloodFragment_to_stockFragment"
             app:destination="@id/stockFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/vendorBloodFragment"
+        android:name="com.sigarda.donora.ui.fragment.stock.VendorBloodFragment"
+        android:label="fragment_vendor_blood"
+        tools:layout="@layout/fragment_vendor_blood" >
+        <action
+            android:id="@+id/action_vendorBloodFragment_to_bloodFragment"
+            app:destination="@id/bloodFragment" />
+        <action
+            android:id="@+id/action_vendorBloodFragment_to_bloodFragment2"
+            app:destination="@id/bloodFragment" />
+        <argument
+            android:name="ProductDataDetail"
+            app:argType="com.sigarda.donora.data.network.models.stock.ProductData" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.sigarda.donora.ui.fragment.history.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" >
+        <action
+            android:id="@+id/action_historyFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_historyFragment_to_createHistoryFragment"
+            app:destination="@id/createHistoryFragment" />
+        <action
+            android:id="@+id/action_historyFragment_to_historyUnitFragment"
+            app:destination="@id/historyUnitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createHistoryFragment"
+        android:name="com.sigarda.donora.ui.fragment.history.CreateHistoryFragment"
+        android:label="fragment_craete_history"
+        tools:layout="@layout/fragment_craete_history" >
+        <action
+            android:id="@+id/action_createHistoryFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyUnitFragment"
+        android:name="com.sigarda.donora.ui.fragment.history.HistoryUnitFragment"
+        android:label="fragment_history_unit"
+        tools:layout="@layout/fragment_history_unit" >
+        <argument
+            android:name="historyUserDetail"
+            app:argType="com.sigarda.donora.data.network.models.history.Get.TotalHistory" />
+        <action
+            android:id="@+id/action_historyUnitFragment_to_historyFragment"
+            app:destination="@id/historyFragment" />
     </fragment>
 </navigation>

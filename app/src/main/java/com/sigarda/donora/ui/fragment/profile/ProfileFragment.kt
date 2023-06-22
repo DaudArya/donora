@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
@@ -23,9 +22,6 @@ import com.sigarda.donora.ui.fragment.auth.login.LoginViewModel
 import com.sigarda.donora.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 import org.chromium.base.ContextUtils
-import com.google.gson.Gson
-import com.sigarda.donora.data.network.models.profile.profile.Data
-import com.sigarda.donora.data.network.models.profile.profile.GetProfileUserResponse
 import com.sigarda.donora.ui.activity.MainActivity
 import com.sigarda.donora.ui.fragment.home.HomeViewModel
 
@@ -72,6 +68,10 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         binding.logoutProfile.setOnClickListener(){
             toLogOut() }
 
+        binding.displayProfile.history.setOnClickListener(){
+            findNavController().navigate(R.id.action_profileFragment_to_historyFragment)
+        }
+
         binding.back.setOnClickListener(){
             findNavController().navigate(R.id.action_profileFragment_to_nav_home)
         }
@@ -94,13 +94,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
 
     private fun observeGetHistory(){
-        levelViewModel.getHistoryResponse.observe(viewLifecycleOwner){
+        levelViewModel.getPastDonorResponse.observe(viewLifecycleOwner){
             when(it){
                 is Resource.Success ->{
                     binding.apply {
 
-                        val point = it.data?.data?.jumlah?.times(5).toString()
-                        pointUser.setText(point+" Poin")
+//                        val point = it.data?.data?.jumlah?.times(5).toString()
+//                        pointUser.setText(point+" Poin")
                     }
                     Log.d("GetHistory", it.message.toString())
                 }
@@ -193,6 +193,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                         }else{
                             displayProfile.tvDonorId.setText("${it.data?.data?.code_donor}")
                         }
+
+                        val point = it.data?.data?.point
+                        if (point == null){
+                            pointUser.text = "0 Poin"
+                        } else {
+                            pointUser.text = point.toString() + " Point"
+                        }
                             val avatar = it.data?.data?.profile_picture
                             if (avatar != null){
                                 Glide.with(requireContext())
@@ -211,7 +218,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
                 }
                 is Resource.Loading ->{
-                    binding.proggresBar.visibility = View.VISIBLE
+
                 }
                 else -> {}
             }
